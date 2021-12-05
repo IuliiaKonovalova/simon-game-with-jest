@@ -5,6 +5,7 @@
 const {
   game,
   newGame,
+  showScore
 } = require("../game");
 
 
@@ -51,5 +52,7 @@ describe("newGame works correctly", () => {
   test("should clear the computer sequence array", () => {
     expect(game.currentGame.length).toBe(0);
   });
-
+  test("should display 0 for the element with id of score", () => {
+    expect(document.getElementById("score").innerText).toEqual(0);
+  });
 });
