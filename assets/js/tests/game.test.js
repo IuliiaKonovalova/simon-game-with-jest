@@ -3,12 +3,11 @@
  */
 
 const {
-  expect
-} = require("@jest/globals");
-const {
   game,
   newGame,
-  showScore
+  showScore,
+  addTurn,
+  lightsOn
 } = require("../game");
 
 
@@ -58,5 +57,29 @@ describe("newGame works correctly", () => {
   });
   test("should display 0 for the element with id of score", () => {
     expect(document.getElementById("score").innerText).toEqual(0);
+  });
+});
+
+describe("gameplay works correctly", () => {
+  beforeEach(() => {
+    game.score = 0;
+    game.currentGame = [];
+    game.playerMoves = [];
+    addTurn();
+
+  });
+  afterEach(() => {
+    game.score = 0;
+    game.currentGame = [];
+    game.playerMoves = [];
+  });
+  test("should adds a new turn to the game by addTurn", () => {
+    addTurn();
+    expect(game.currentGame.length).toBe(2);
+  });
+  test("should add correct class to light up the buttons", () => {
+    let button = document.getElementById(game.currentGame[0]);
+    lightsOn(game.currentGame[0]);
+    expect(button.classList).toContain("light");
   });
 });
