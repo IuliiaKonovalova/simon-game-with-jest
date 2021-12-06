@@ -3,6 +3,9 @@
  */
 
 const {
+  expect
+} = require("@jest/globals");
+const {
   game,
   newGame,
   showScore,
@@ -95,4 +98,9 @@ describe("gameplay works correctly", () => {
     showTurns();
     expect(game.turnNumber).toBe(0);
   });
+  test("should increment the score if the turn is correct", () => {
+    game.playerMoves.push(game.currentGame[0]);
+    expect(game.score).toBe(1);
+  })
+
 });
