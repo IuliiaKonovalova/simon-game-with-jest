@@ -3,16 +3,16 @@
  */
 
 const {
-  expect
-} = require("@jest/globals");
-const {
   game,
   newGame,
   showScore,
   addTurn,
   lightsOn,
-  showTurns
+  showTurns,
+  playerTurn
 } = require("../game");
+
+jest.spyOn(window, "alert").mockImplementation(() => {});
 
 beforeAll(() => {
   let fs = require("fs");
@@ -100,7 +100,7 @@ describe("gameplay works correctly", () => {
   });
   test("should increment the score if the turn is correct", () => {
     game.playerMoves.push(game.currentGame[0]);
+    playerTurn();
     expect(game.score).toBe(1);
-  })
-
+  });
 });
