@@ -94,7 +94,7 @@ describe("gameplay works correctly", () => {
   test("should add correct class to light up the buttons", () => {
     let button = document.getElementById(game.currentGame[0]);
     lightsOn(game.currentGame[0]);
-    expect(button.classList).toContain(game.currentGame[0] + "light");
+    expect(button.classList).toContain("light");
   });
   test("showTurns should update game.turnNumber", () => {
     game.turnNumber = 42;
